@@ -1,7 +1,16 @@
+<script>
+  	/** @type {import('./$types').PageData} */
+      export let data;
+      const {items} = data;
+</script>
+
 <div class="guides">
     <ul>
-      <li><a href="/">guide 1</a></li>
-      <li><a href="/">guide 2</a></li>
+      {#each items as item}
+        <a href={`/guides/${item.id}`}>
+          <li>{item.title}</li>
+        </a>
+      {/each}
     </ul>
   </div>
   
@@ -11,10 +20,13 @@
     }
     ul {
       list-style-type: none;
+      display:flex;
+      flex-direction: column;
       padding: 0;
     }
     a {
       display: inline-block;
+      width: fit-content;
       margin-top: 10px;
       padding: 10px;
       border: 1px dotted rgba(255,255,255,0.2);
